@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <script src="../../../node_modules/bootstrap/js/dist/alert.js"></script>
+    <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+
+    <style>
+        body {
+            background-color: grey;
+            justify-self: center;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box {
+            height: 62vh;
+            width: 60%;
+            justify-content: center;
+            align-items: center;
+            justify-self: center;
+            color: darkgreen;
+            background-color: darkolivegreen;
+            margin-left: 20%;
+            margin-top: 100px;
+            border-radius: 10px;
+        }
+
+        .button {
+            text-align: center;
+            /* margin-top: 30px; */
+        }
+
+        .btn {
+            background-color: rgba(255, 255, 255, 0.496);
+            box-shadow: 3px 3px 10px dimgray;
+            align-items: center;
+            justify-content: center;
+            margin: 5px;
+            width: auto;
+            font-size: .7rem;
+            border-radius: 30px;
+            padding: 5px 15px 5px 15px;
+            margin-top: 15px;
+        }
+
+        .row {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .p1 {
+            background-color: greenyellow;
+            padding: 20px;
+            border-radius: 15px;
+            height: 50vh;
+            width: 49.5%;
+            margin-right: 2.5px;
+        }
+
+        .p2 {
+            background-color: rgba(153, 236, 27, 0.537);
+            padding: 20px;
+            border-radius: 15px;
+            height: 50vh;
+            margin-left: 2.5px;
+            width: 49%;
+        }
+
+        .card {
+            margin-top: 25%;
+            align-items: center;
+            margin-left: 12%;
+            height: 12vh;
+            border-radius: 15px;
+            ;
+            background-color: grey;
+            color: darkslategray;
+            padding: 10px;
+            width: 70%;
+        }
+
+        #dice {
+            /* background-color: hotpink; */
+            text-align: center;
+            margin-top: -190px;
+        }
+
+        .btnn {
+            margin-top: -180px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: green;
+        }
+
+        h2 {
+            font-size: 4rem;
+            padding-top: 5px;
+            /* margin-top: 10px; */
+        }
+
+        h3 {
+            font-size: 1.5rem;
+        }
+
+        h4 {
+            font-size: 1.7rem;
+        }
+    </style>
+
+    <script>
+        var player = 1;
+        function newGame() {
+            total=0;
+            count = 0;
+            player = 1;
+            document.getElementById('score1').innerHTML = '0';
+            document.getElementById('score2').innerHTML = '0';
+            document.getElementById('current1').innerHTML = '0';
+            document.getElementById('current2').innerHTML = '0';
+            document.getElementById('dice').innerHTML = '';
+            document.getElementById('p1').style.background = 'greenyellow';
+            document.getElementById('p2').style.background = 'rgba(153, 236, 27, 0.537)';
+            // bodyload();
+        }
+
+        var count = 0;
+        function rollDice() {
+            var dice = document.getElementById('dice');
+            var num = dice.innerHTML = Math.trunc((Math.random() * 6) + 1);
+                if (player == 1) {
+                    if (num == 1) {
+                        dice.innerHTML = '<img src=" Alea_a1.png "width ="70px" height="70px"> '
+                        count = 0;
+                        document.getElementById('current1').innerHTML = count;
+                        document.getElementById('p1').style.background = 'rgba(153, 236, 27, 0.537)';
+                        document.getElementById('p2').style.background = 'greenyellow';
+                        player = 0;
+                    }
+                    if (num == 2) {
+                        dice.innerHTML = '<img src=" Alea_2.png "width ="70px" height="70px"> '
+                        count = count + 2;
+                        document.getElementById('current1').innerHTML = count;
+                    }
+                    if (num == 3) {
+                        dice.innerHTML = '<img src=" Alea_3.png "width ="70px" height="70px"> '
+                        count = count + 3;
+                        document.getElementById('current1').innerHTML = count;
+                    }
+                    if (num == 4) {
+                        dice.innerHTML = '<img src=" Alea_4.png "width ="70px" height="70px"> '
+                        count = count + 4;
+                        document.getElementById('current1').innerHTML = count;
+                    }
+                    if (num == 5) {
+                        dice.innerHTML = '<img src=" Alea_5.png "width ="70px" height="70px"> '
+                        count = count + 5;
+                        document.getElementById('current1').innerHTML = count;
+                    }
+                    if (num == 6) {
+                        dice.innerHTML = '<img src=" Alea_6.png "width ="70px" height="70px"> '
+                        count = count + 6;
+                        document.getElementById('current1').innerHTML = count;
+                    }
+                    if(total >= 50){
+                        document.getElementById('score1').innerHTML = total;
+                        document.getElementById('current1').innerHTML = '<h3> WIN </h3>'
+                        document.getElementById('p1').style.background = 'red';
+                        document.getElementById('p1').style.color = 'white';
+                        document.getElementById('current1').style.color = 'white';
+                    }
+                }
+                else {
+                    if (num == 1) {
+                        dice.innerHTML = '<img src=" Alea_a1.png "width ="70px" height="70px"> '
+                        count = 0;
+                        document.getElementById('current2').innerHTML = count;
+                        document.getElementById('p2').style.background = 'rgba(153, 236, 27, 0.537)';
+                        document.getElementById('p1').style.background = 'greenyellow';
+                        player = 1;
+                    }
+                    if (num == 2) {
+                        dice.innerHTML = '<img src=" Alea_2.png "width ="70px" height="70px"> '
+                        count = count + 2;
+                        document.getElementById('current2').innerHTML = count;
+                    }
+                    if (num == 3) {
+                        dice.innerHTML = '<img src=" Alea_3.png "width ="70px" height="70px"> '
+                        count = count + 3;
+                        document.getElementById('current2').innerHTML = count;
+                    }
+                    if (num == 4) {
+                        dice.innerHTML = '<img src=" Alea_4.png "width ="70px" height="70px"> '
+                        count = count + 4;
+                        document.getElementById('current2').innerHTML = count;
+                    }
+                    if (num == 5) {
+                        dice.innerHTML = '<img src=" Alea_5.png "width ="70px" height="70px"> '
+                        count = count + 5;
+                        document.getElementById('current2').innerHTML = count;
+                    }
+                    if (num == 6) {
+                        dice.innerHTML = '<img src=" Alea_6.png "width ="70px" height="70px"> '
+                        count = count + 6;
+                        document.getElementById('current2').innerHTML = count;
+                    }
+                    if(total >= 50){
+                        document.getElementById('score2').innerHTML = total;
+                        document.getElementById('current2').innerHTML = '<h3> WIN </h3>'
+                        document.getElementById('p2').style.background = 'red';
+                        document.getElementById('p2').style.color = 'white';
+                        document.getElementById('current2').style.color = 'white';
+                    }
+                }
+            
+
+
+            // document.getElementById('current1').innerHTML = count;
+        }
+
+        var total = 0;
+        function hold() {
+            if (player == 1) {
+                total = count;
+                document.getElementById('p1').style.background = 'rgba(153, 236, 27, 0.537)';
+                document.getElementById('p2').style.background = 'greenyellow';
+                document.getElementById('score1').innerHTML = count;
+                document.getElementById('current1').innerHTML = 0;
+                player = 0;
+            }
+            else {
+                total = count;
+                document.getElementById('p2').style.background = 'rgba(153, 236, 27, 0.537)';
+                document.getElementById('p1').style.background = 'greenyellow';
+                document.getElementById('score2').innerHTML = count;
+                document.getElementById('current2').innerHTML = 0;
+                player = 1;
+            }
+
+            // document.getElementById('p1').style.background = 'rgba(172, 255, 47, 0.387)';
+            // document.getElementById('p2').style.background = 'greenyellow';
+        }
+
+    </script>
+
+
+</head>
+
+<body class="container-fluid" onload="bodyload()">
+    <div class="box">
+        <div>
+            <div class="button">
+                <button class="btn" onclick="newGame()">NEW GAME</button>
+            </div>
+            <div class="row">
+                <div class="col-6 p1 active" id="p1">
+                    <h1>Player 1</h1>
+                    <h2 id="score1"> 0</h2>
+                    <div class="card">
+                        <h3>CURRENT</h3>
+                        <h4 id="current1">0</h4>
+                    </div>
+                </div>
+                <div class="col-6 p2 active" id="p2">
+                    <h1>Player 2</h1>
+                    <h2 id="score2">0</h2>
+                    <div class="card">
+                        <h3>CURRENT</h3>
+                        <h4 id="current2">0</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="btnn">
+                <div class="button">
+                    <button class="btn" onclick="rollDice()">ROLL DICE</button>
+                </div>
+                <div class="button">
+                    <button class="btn" onclick="hold()">HOLD</button>
+                </div>
+            </div>
+            <div id="dice">
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
